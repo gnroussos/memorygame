@@ -1,0 +1,325 @@
+﻿<Page
+    x:Class="MemoryGame.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MemoryGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <!--alternative way to load custome styles
+    <Page.Resources>
+        <ResourceDictionary Source="Sample-Utils/ScenariosTemplateStyles.xaml"/>
+    </Page.Resources>-->
+
+    <Grid Background="#FF4F99D6">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- The title for the game -->
+        <Grid Grid.ColumnSpan="2">
+            <RichTextBlock FontFamily="Freestyle Script" FontWeight="Bold" FontSize="90"
+                           TextAlignment="Center" Foreground="Green" VerticalAlignment="Center">
+                <Paragraph>
+                    <Run Text="Secret ZOO!"/>
+                </Paragraph>
+            </RichTextBlock>
+        </Grid>
+
+        <!-- Game controls-->
+        <Grid Grid.Row="1" Grid.RowSpan="2" Background="#FF4F99D6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            
+            <StackPanel x:Name="ButtonPanel" Grid.Row="0">
+                <Button x:Name="StartButton" Content="Start" FontSize="32" BorderBrush="Black" Height="90" Width="150" Margin="0,80,0,0"
+                        HorizontalAlignment="Center" Foreground="#FF0B2F6E" Tapped="StartButton_Tapped">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                            <GradientStop Color="white" Offset="1"/>
+                            <GradientStop Color="#FF3B68B8"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <!--<StackPanel x:Name="ButtonPanel" Grid.Row="1" Margin="0,0,0,190">-->
+                <Button x:Name="HowToButton" Content="How to Play" FontSize="24" Foreground="#FF0B2F6E"
+                    BorderBrush="Black" Height="90" Width="150" HorizontalAlignment="Center" Margin="0,50,0,0" Tapped="HowToButton_Tapped">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#FF3B68B8" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+
+                </Button>
+            </StackPanel>
+
+            <StackPanel x:Name="statsArea" Grid.Row="1" VerticalAlignment="Bottom">
+                <TextBlock Margin="10,0,0,10" Foreground="Black" FontSize="32"  TextWrapping="Wrap" >
+                        <Run x:Name="triesBox" Text="Tries: " />
+                        <Run x:Name="triesText" Text="0" />
+                </TextBlock>
+                <TextBlock x:Name="gameoverStats" Margin="10,0,0,70" Foreground="Black" FontSize="26" TextWrapping="Wrap" Opacity="1" >
+                    	<Run x:Name="scoreBox" Text="Your score: "/>
+                        <Run x:Name="scoreText" Text=""/>
+                    	<LineBreak/>
+                    	<Run x:Name="timeBox" Text="Your Time: "/>
+                        <Run x:Name="timeText" Text=""/>
+                </TextBlock>
+            </StackPanel>
+
+        </Grid>
+
+        <!-- Message area -->
+        <Grid x:Name="messageArea" Grid.Column="1" Grid.Row="2" Background="#FF4F99D6">
+            <RichTextBlock x:Name="winMessage" FontFamily="Freestyle Script" Foreground="Green"
+                           FontWeight="Bold" FontSize="90" TextAlignment="Center" Opacity="0">
+                <Paragraph>
+                    <Run Text="YOU WIN!!!"/>
+                </Paragraph>
+            </RichTextBlock>
+
+            <RichTextBlock x:Name="startMsg" FontSize="90" Foreground="Green" TextAlignment="Center" >
+                <Paragraph>
+                    <Run Text="Press start!!!"/>
+                </Paragraph>
+            </RichTextBlock>
+
+            <RichTextBlock x:Name="playMessage" Style="{StaticResource RulesText}">
+                <Paragraph FontFamily="Felix Titling" FontSize="28" FontWeight="Normal" Foreground="Green">
+                    <Run Text="How to Play:"/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Find all the pairs of matching cards "/>
+                    <Run Text="by turning up two at a time."/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="If two cards don't match, click either to turn them back over."/>
+                </Paragraph>
+                <Paragraph >
+                    <Run Text="Click the Start button for a new game."/>
+                </Paragraph>
+            </RichTextBlock>
+        </Grid>
+      
+        <Grid x:Name="cardGrid" Grid.Row="1" Grid.Column="1" Margin="0,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<Grid.Resources>
+                <Storyboard x:Name="ButtonTurn">
+                    <DoubleAnimation From="1" To="360" Duration="00:00:2" BeginTime="00:00:0"
+                                         Storyboard.TargetName="buttonRotate" Storyboard.TargetProperty="Angle"
+                                         AutoReverse="True">
+                        <DoubleAnimation.EasingFunction>
+                            <ElasticEase Oscillations="1" Springiness="1" EasingMode="EaseOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                </Storyboard>
+            </Grid.Resources>-->
+            
+            <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button1" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                    <!--<Button.RenderTransform>
+                        <RotateTransform x:Name="buttonRotate" />
+                    </Button.RenderTransform>-->
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button2" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button3" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button4" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button5" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button6" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited" >
+                <Button x:Name="button7" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button8" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="2" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button9" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button10" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button11" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="2" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button12" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="3" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button13" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button14" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button15" Style="{StaticResource ButtonFace}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="3" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button16" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="4" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited" >
+                <Button x:Name="button17" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="4" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button18" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="4" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button19" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="4" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button20" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="5" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button21" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="5" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button22" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="5" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button23" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="5" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
+                <Button x:Name="button24" Style="{StaticResource ButtonAnim}" Click="button_Click">
+                    <Button.Content>
+                        <Image Source=" " Style="{StaticResource CardVisible}"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
