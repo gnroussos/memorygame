@@ -5,8 +5,9 @@ A memory card game project in C++/CX Windows 10 which demonstates features on th
 <li>Fisher - Yates suffle algorithm</li>
 <li>High resolution timer</li>
 <li>XAML UI & elements transitions </li>
-<li> Command bar</li>
-<li> Data binding</li>
+<li>Command bar</li>
+<li>Dialog boxes</li>
+<li>Data binding</li>
 
 # Future work
 will implement animated elements & storyboard animations
