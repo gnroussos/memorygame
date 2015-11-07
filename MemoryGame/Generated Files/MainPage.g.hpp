@@ -36,30 +36,24 @@ void ::MemoryGame::MainPage::Connect(int __connectionId, ::Platform::Object^ __t
             break;
         case 2:
             {
-                this->messageArea = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
+                this->StartButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->StartButton))->Tapped += ref new ::Windows::UI::Xaml::Input::TappedEventHandler(this, (void (::MemoryGame::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::Input::TappedRoutedEventArgs^))&MainPage::StartButton_Tapped);
             }
             break;
         case 3:
             {
-                this->cardGrid = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
+                this->statsArea = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
             }
             break;
         case 4:
             {
-                ::Windows::UI::Xaml::Controls::Grid^ element4 = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element4))->PointerEntered += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Entered);
-                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element4))->PointerExited += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Exited);
+                this->messageArea = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
             }
             break;
         case 5:
             {
-                ::Windows::UI::Xaml::Controls::Grid^ element5 = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element5))->PointerEntered += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Entered);
-                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element5))->PointerExited += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Exited);
+                this->cardGrid = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
             }
             break;
         case 6:
@@ -262,195 +256,203 @@ void ::MemoryGame::MainPage::Connect(int __connectionId, ::Platform::Object^ __t
             break;
         case 28:
             {
+                ::Windows::UI::Xaml::Controls::Grid^ element28 = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element28))->PointerEntered += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Entered);
+                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element28))->PointerExited += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Exited);
+            }
+            break;
+        case 29:
+            {
+                ::Windows::UI::Xaml::Controls::Grid^ element29 = safe_cast<::Windows::UI::Xaml::Controls::Grid^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element29))->PointerEntered += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Entered);
+                (safe_cast<::Windows::UI::Xaml::Controls::Grid^>(element29))->PointerExited += ref new ::Windows::UI::Xaml::Input::PointerEventHandler(this, (void (::MemoryGame::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::Input::PointerRoutedEventArgs^))&MainPage::Card_Exited);
+            }
+            break;
+        case 30:
+            {
                 this->button24 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button24))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 29:
+        case 31:
             {
                 this->button23 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button23))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 30:
+        case 32:
             {
                 this->button22 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button22))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 31:
+        case 33:
             {
                 this->button21 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button21))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 32:
+        case 34:
             {
                 this->button20 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button20))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 33:
+        case 35:
             {
                 this->button19 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button19))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 34:
+        case 36:
             {
                 this->button18 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button18))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 35:
+        case 37:
             {
                 this->button17 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button17))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 36:
+        case 38:
             {
                 this->button16 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button16))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 37:
+        case 39:
             {
                 this->button15 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button15))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 38:
+        case 40:
             {
                 this->button14 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button14))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 39:
+        case 41:
             {
                 this->button13 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button13))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 40:
+        case 42:
             {
                 this->button12 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button12))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 41:
+        case 43:
             {
                 this->button11 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button11))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 42:
+        case 44:
             {
                 this->button10 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button10))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 43:
+        case 45:
             {
                 this->button9 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button9))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 44:
+        case 46:
             {
                 this->button8 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button8))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 45:
+        case 47:
             {
                 this->button7 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button7))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 46:
+        case 48:
             {
                 this->button6 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button6))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 47:
+        case 49:
             {
                 this->button5 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button5))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 48:
+        case 50:
             {
                 this->button4 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button4))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 49:
+        case 51:
             {
                 this->button3 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button3))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 50:
+        case 52:
             {
                 this->button2 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button2))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 51:
+        case 53:
             {
                 this->button1 = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button1))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::button_Click);
             }
             break;
-        case 52:
+        case 54:
             {
                 this->winMessage = safe_cast<::Windows::UI::Xaml::Controls::RichTextBlock^>(__target);
             }
             break;
-        case 53:
+        case 55:
             {
                 this->startMsg = safe_cast<::Windows::UI::Xaml::Controls::RichTextBlock^>(__target);
             }
             break;
-        case 54:
-            {
-                this->playMessage = safe_cast<::Windows::UI::Xaml::Controls::RichTextBlock^>(__target);
-            }
-            break;
-        case 55:
-            {
-                this->ButtonPanel = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
-            }
-            break;
         case 56:
             {
-                this->statsArea = safe_cast<::Windows::UI::Xaml::Controls::StackPanel^>(__target);
+                this->playMessage = safe_cast<::Windows::UI::Xaml::Controls::RichTextBlock^>(__target);
             }
             break;
         case 57:
@@ -490,16 +492,46 @@ void ::MemoryGame::MainPage::Connect(int __connectionId, ::Platform::Object^ __t
             break;
         case 64:
             {
-                this->StartButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->StartButton))->Tapped += ref new ::Windows::UI::Xaml::Input::TappedEventHandler(this, (void (::MemoryGame::MainPage::*)
-                    (::Platform::Object^, ::Windows::UI::Xaml::Input::TappedRoutedEventArgs^))&MainPage::StartButton_Tapped);
+                this->AboutButton = safe_cast<::Windows::UI::Xaml::Controls::AppBarButton^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::AppBarButton^>(this->AboutButton))->Tapped += ref new ::Windows::UI::Xaml::Input::TappedEventHandler(this, (void (::MemoryGame::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::Input::TappedRoutedEventArgs^))&MainPage::About_Tapped);
             }
             break;
         case 65:
             {
-                this->HowToButton = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->HowToButton))->Tapped += ref new ::Windows::UI::Xaml::Input::TappedEventHandler(this, (void (::MemoryGame::MainPage::*)
+                this->HowToButton = safe_cast<::Windows::UI::Xaml::Controls::AppBarButton^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::AppBarButton^>(this->HowToButton))->Tapped += ref new ::Windows::UI::Xaml::Input::TappedEventHandler(this, (void (::MemoryGame::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::Input::TappedRoutedEventArgs^))&MainPage::HowToButton_Tapped);
+            }
+            break;
+        case 66:
+            {
+                this->AboutGrid = safe_cast<::Windows::UI::Xaml::Controls::ItemsControl^>(__target);
+            }
+            break;
+        case 67:
+            {
+                this->AboutLogo = safe_cast<::Windows::UI::Xaml::Controls::Image^>(__target);
+            }
+            break;
+        case 68:
+            {
+                this->AboutCopyR = safe_cast<::Windows::UI::Xaml::Documents::Run^>(__target);
+            }
+            break;
+        case 69:
+            {
+                this->AboutDescription = safe_cast<::Windows::UI::Xaml::Documents::Run^>(__target);
+            }
+            break;
+        case 70:
+            {
+                this->AboutVersion = safe_cast<::Windows::UI::Xaml::Documents::Run^>(__target);
+            }
+            break;
+        case 71:
+            {
+                this->AboutName = safe_cast<::Windows::UI::Xaml::Documents::Run^>(__target);
             }
             break;
     }

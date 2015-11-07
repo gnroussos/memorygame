@@ -28,8 +28,8 @@ MainPage::MainPage()
 {
 	InitializeComponent();
 
-	steelBrush = ref new SolidColorBrush(Windows::UI::Colors::Black);
-	azureBrush = ref new SolidColorBrush(Windows::UI::Colors::White);
+	blackBrush = ref new SolidColorBrush(Windows::UI::Colors::Black);
+	whiteBrush = ref new SolidColorBrush(Windows::UI::Colors::White);
 	redBrush = ref new SolidColorBrush(Windows::UI::Colors::Red);
 
 
@@ -46,13 +46,13 @@ MainPage::MainPage()
 
 void MemoryGame::MainPage::Card_Entered(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
 {
-	safe_cast<Grid^>(sender)->Background = steelBrush;
+	safe_cast<Grid^>(sender)->Background = blackBrush;
 }
 
 
 void MemoryGame::MainPage::Card_Exited(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
 {
-	safe_cast<Grid^>(sender)->Background = azureBrush;
+	safe_cast<Grid^>(sender)->Background = whiteBrush;
 }
 
 int MemoryGame::MainPage::IsFound(Windows::UI::Xaml::Controls::Button ^B)
@@ -76,7 +76,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 	else
 		safe_cast<Image^>(obj)->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
 
-	if (Button1Up == nullptr && Button2Up == nullptr)			//no card up
+	if (Button1Up == nullptr && Button2Up == nullptr)								//no card up
 	{
 		Button1Up = safe_cast<Button^>(sender);
 		int found = IsFound(Button1Up);
@@ -90,7 +90,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 	{
 		Button2Up = safe_cast<Button^>(sender);
 
-		tries++;																//count the pair up
+		tries++;																	//count the pair up
 		triesText->Text = tries.ToString();
 
 		int found = IsFound(Button2Up);
@@ -100,7 +100,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 			Button2Up->IsHitTestVisible = false;
 		}
 
-		for (int i = 0; i < cardGrid->Children->Size; i++)					//disable rest cards
+		for (int i = 0; i < cardGrid->Children->Size; i++)							//disable rest cards
 		{
 			Grid^ grid = safe_cast<Grid^>(cardGrid->Children->GetAt(i));
 			Button^ btn = safe_cast<Button^>(grid->Children->GetAt(0));
@@ -110,7 +110,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 				btn->IsHitTestVisible = false;
 		}
 
-		if (card1Up->type == card2Up->type)						//found match cards
+		if (card1Up->type == card2Up->type)											//found match cards
 		{
 			pairsFound->Append(Button1Up);
 			pairsFound->Append(Button2Up);
@@ -127,16 +127,16 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 			Button2Up->IsEnabled = false;
 			Button1Up = Button2Up = nullptr;
 
-			if (++pairCount == cardCount / 2)					//test for end & reset
+			if (++pairCount == cardCount / 2)										//test for end & reset
 				GameOver();
 		}
-		else 													//not match
+		else 																		//not match
 		{
 			Button1Up->IsHitTestVisible = true;
 			Button2Up->IsHitTestVisible = true;
 		}
 	}
-	else														//both cards up
+	else																			//both cards up
 	{
 		Button ^ButtonUp = safe_cast<Button^>(sender);
 		if (ButtonUp == Button1Up)
@@ -154,7 +154,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 	}
 	if ((Button1Up == nullptr && Button2Up == nullptr) && (card1Up != nullptr || card2Up != nullptr))	//reanable rest of cards
 	{
-		for (int i = 0; i < cardGrid->Children->Size; i++)	//enable rest cards
+		for (int i = 0; i < cardGrid->Children->Size; i++)							//enable rest cards
 		{
 			Grid^ grid = safe_cast<Grid^>(cardGrid->Children->GetAt(i));
 			Button^ btn = safe_cast<Button^>(grid->Children->GetAt(0));
@@ -282,7 +282,7 @@ void MemoryGame::MainPage::InitializeGame()
 		Image^ img = safe_cast<Image^>(btn->Content);
 		btn->IsHitTestVisible = true;
 		btn->IsEnabled = true;
-		btn->Background = azureBrush;
+		btn->Background = whiteBrush;
 		btn->Opacity = 1;
 		img->Source = ref new BitmapImage(ref new Windows::Foundation::Uri("ms-appx:///" + cardPack[i]->type));
 		img->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
@@ -295,4 +295,16 @@ void MemoryGame::MainPage::StartButton_Tapped(Platform::Object^ sender, Windows:
 	HideMessages();															//hide messages
 	cardGrid->IsHitTestVisible = true;										//activate grid
 	timer->StartTimer();													//start time
+}
+
+
+void MemoryGame::MainPage::About_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e)
+{
+	AboutInfo ^aboutInfo = ref new AboutInfo();
+	aboutInfo->AppName = "Secret Zoo";
+	aboutInfo->Description = "A card game to test your memory!";
+	aboutInfo->CopyRight = "(c)2015";
+	aboutInfo->Version = "Version: 1.0";
+	aboutInfo->Logo = "Assets/smalllogo.png";
+	AboutGrid->DataContext = aboutInfo;
 }

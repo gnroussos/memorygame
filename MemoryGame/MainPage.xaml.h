@@ -30,23 +30,35 @@ namespace MemoryGame
 			type = card->type;
 		}
 
-	public:
 		property Platform::String^ type;                             // type ~ image name
 	};
 
-// class to count time - using "old" windows code into 
+//class to hold About info
+	[Windows::UI::Xaml::Data::Bindable]
+	public ref class AboutInfo sealed
+	{
+	public:
+		property Platform::String^ AppName;
+		property Platform::String^ Description;
+		property Platform::String^ Logo;
+		property Platform::String^ Version;
+		property Platform::String^ CopyRight;
+
+	};
+
+// class to count time - using "old" windows code 
 	private ref class HRTimer sealed
 	{
 	private:
-		LARGE_INTEGER start;		// Stores start ime
-		LARGE_INTEGER stop;			// Stores stop time
-		double frequency;			// Time for one clock tick in seconds
+		LARGE_INTEGER start;										// Stores start ime
+		LARGE_INTEGER stop;											// Stores stop time
+		double frequency;											// Time for one clock tick in seconds
 
 	public:
 		HRTimer(void) : frequency(1.0 / GetFrequency()) { }
 
-		// Get the timer frequency - clock ticks per second
-		double GetFrequency(void)
+		// Get the timer frequency - cloc
+		double GetFrequency()
 		{
 			LARGE_INTEGER proc_freq;
 			QueryPerformanceFrequency(&proc_freq);
@@ -76,29 +88,29 @@ namespace MemoryGame
 		MainPage();
 
 	private:
-		HRTimer ^timer;													//timer 
+		HRTimer ^timer;														//timer 
 
-		int cardCount;                                                  // The number of cards
+		int cardCount;														// The number of cards
 		int tries;
 		
-		Windows::UI::Xaml::Media::SolidColorBrush^ steelBrush;				// Card highlight color
-		Windows::UI::Xaml::Media::SolidColorBrush^ azureBrush;				// Card normal color
+		Windows::UI::Xaml::Media::SolidColorBrush^ blackBrush;				// Card highlight color
+		Windows::UI::Xaml::Media::SolidColorBrush^ whiteBrush;				// Card normal color
 		Windows::UI::Xaml::Media::SolidColorBrush^ redBrush;				// Card found color
 
-		Platform::Array<Card^>^ cardPack;                              // The pack of cards
+		Platform::Array<Card^>^ cardPack;									// The pack of cards
 		Windows::UI::Xaml::Controls::Button ^Button1Up;
 		Windows::UI::Xaml::Controls::Button ^Button2Up;
 		Platform::Collections::Vector<Windows::UI::Xaml::Controls::Button^>^ pairsFound;                  // Pairs found in the game
 //// Game records
-		Card^  card1Up;                                                    // 1st card turned up
-		Card^  card2Up;                                                    // 2nd card turned up
-		int pairCount;                                                     // Number of pairs found
+		Card^  card1Up;														// 1st card turned up
+		Card^  card2Up;														// 2nd card turned up
+		int pairCount;														// Number of pairs found
 		
-		void InitializeCardPack();                                         // Initializes cardPack to hold two of each card
-		void InitializeGame();                                             // Sets up a game with a shuffled cardPack
-		void ShuffleCards();                                               // Shuffle the cards
+		void InitializeCardPack();											// Initializes cardPack to hold two of each card
+		void InitializeGame();												// Sets up a game with a shuffled cardPack
+		void ShuffleCards();												// Shuffle the cards
 		void GameOver();
-//		void DisableCardUp(Card^ card);
+
 		int IsFound(Windows::UI::Xaml::Controls::Button ^B);
 		void HideMessages();
 
@@ -109,5 +121,6 @@ namespace MemoryGame
 		void HowToButton_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e);
 		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void StartButton_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e);
+		void About_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e);
 	};
 }

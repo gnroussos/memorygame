@@ -50,25 +50,28 @@
     <Image Include="Assets\Images\rabbit.jpg">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\Logo1.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\StoreLogo1.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\SplashScreen1.png">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="Debug\turtle.jpg">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\SmallLogo1.png">
       <Filter>Assets</Filter>
     </Image>
     <Image Include="Assets\Images\seal.jpg">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\Images\penguin.jpg">
+    <Image Include="Assets\Images\turtle.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\badge.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\logo.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\smalllogo.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\splashscreen.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\store.scale-100.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

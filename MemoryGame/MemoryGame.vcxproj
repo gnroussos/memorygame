@@ -163,6 +163,7 @@
     <None Include="MemoryGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\badge.scale-100.png" />
     <Image Include="Assets\Images\calf.jpg" />
     <Image Include="Assets\Images\cat.jpg" />
     <Image Include="Assets\Images\chicks.jpg" />
@@ -171,15 +172,15 @@
     <Image Include="Assets\Images\goat.jpg" />
     <Image Include="Assets\Images\mouse.jpg" />
     <Image Include="Assets\Images\owl.jpg" />
-    <Image Include="Assets\Images\penguin.jpg" />
     <Image Include="Assets\Images\pig.jpg" />
     <Image Include="Assets\Images\rabbit.jpg" />
     <Image Include="Assets\Images\seal.jpg" />
+    <Image Include="Assets\Images\turtle.jpg" />
+    <Image Include="Assets\logo.scale-100.png" />
+    <Image Include="Assets\smalllogo.scale-100.png" />
+    <Image Include="Assets\splashscreen.png" />
+    <Image Include="Assets\store.scale-100.png" />
     <Image Include="Debug\turtle.jpg" />
-    <Image Include="Assets\Logo1.png" />
-    <Image Include="Assets\SmallLogo1.png" />
-    <Image Include="Assets\SplashScreen1.png" />
-    <Image Include="Assets\StoreLogo1.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">

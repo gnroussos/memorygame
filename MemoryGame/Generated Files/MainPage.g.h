@@ -11,11 +11,14 @@ namespace Windows {
     namespace UI {
         namespace Xaml {
             namespace Controls {
-                ref class Grid;
                 ref class Button;
-                ref class RichTextBlock;
                 ref class StackPanel;
+                ref class Grid;
+                ref class RichTextBlock;
                 ref class TextBlock;
+                ref class AppBarButton;
+                ref class ItemsControl;
+                ref class Image;
             }
         }
     }
@@ -45,6 +48,8 @@ namespace MemoryGame
     private:
         bool _contentLoaded;
     
+        private: ::Windows::UI::Xaml::Controls::Button^ StartButton;
+        private: ::Windows::UI::Xaml::Controls::StackPanel^ statsArea;
         private: ::Windows::UI::Xaml::Controls::Grid^ messageArea;
         private: ::Windows::UI::Xaml::Controls::Grid^ cardGrid;
         private: ::Windows::UI::Xaml::Controls::Button^ button24;
@@ -74,8 +79,6 @@ namespace MemoryGame
         private: ::Windows::UI::Xaml::Controls::RichTextBlock^ winMessage;
         private: ::Windows::UI::Xaml::Controls::RichTextBlock^ startMsg;
         private: ::Windows::UI::Xaml::Controls::RichTextBlock^ playMessage;
-        private: ::Windows::UI::Xaml::Controls::StackPanel^ ButtonPanel;
-        private: ::Windows::UI::Xaml::Controls::StackPanel^ statsArea;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ gameoverStats;
         private: ::Windows::UI::Xaml::Documents::Run^ scoreBox;
         private: ::Windows::UI::Xaml::Documents::Run^ scoreText;
@@ -83,8 +86,14 @@ namespace MemoryGame
         private: ::Windows::UI::Xaml::Documents::Run^ timeText;
         private: ::Windows::UI::Xaml::Documents::Run^ triesBox;
         private: ::Windows::UI::Xaml::Documents::Run^ triesText;
-        private: ::Windows::UI::Xaml::Controls::Button^ StartButton;
-        private: ::Windows::UI::Xaml::Controls::Button^ HowToButton;
+        private: ::Windows::UI::Xaml::Controls::AppBarButton^ AboutButton;
+        private: ::Windows::UI::Xaml::Controls::AppBarButton^ HowToButton;
+        private: ::Windows::UI::Xaml::Controls::ItemsControl^ AboutGrid;
+        private: ::Windows::UI::Xaml::Controls::Image^ AboutLogo;
+        private: ::Windows::UI::Xaml::Documents::Run^ AboutCopyR;
+        private: ::Windows::UI::Xaml::Documents::Run^ AboutDescription;
+        private: ::Windows::UI::Xaml::Documents::Run^ AboutVersion;
+        private: ::Windows::UI::Xaml::Documents::Run^ AboutName;
     };
 }
 

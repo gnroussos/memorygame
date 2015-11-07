@@ -1,19 +1,6 @@
-﻿Build started 11/3/2015 12:24:21 PM.
+﻿Build started 11/6/2015 7:52:12 PM.
      1>Project "G:\Projects\MemoryGame\MemoryGame\MemoryGame.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         F:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /IG:\Projects\MemoryGame\MemoryGame\ /I"Generated Files\\" /IDebug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /D __WRL_NO_DEFAULT_LIB__ /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"Debug\MemoryGame.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /wd4453 /wd28204 /FU"F:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib\store\references\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\1.0.0.0\Windows.Foundation.FoundationContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\1.0.0.0\Windows.Foundation.UniversalApiContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Networking.Connectivity.WwanContract\1.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd" /analyze- /errorReport:prompt /bigobj MainPage.xaml.cpp
-         MainPage.xaml.cpp
-     1>g:\projects\memorygame\memorygame\mainpage.xaml.cpp(60): warning C4018: '<': signed/unsigned mismatch
-     1>g:\projects\memorygame\memorygame\mainpage.xaml.cpp(103): warning C4018: '<': signed/unsigned mismatch
-     1>g:\projects\memorygame\memorygame\mainpage.xaml.cpp(157): warning C4018: '<': signed/unsigned mismatch
-     1>g:\projects\memorygame\memorygame\mainpage.xaml.cpp(161): warning C4018: '>': signed/unsigned mismatch
-     1>g:\projects\memorygame\memorygame\mainpage.xaml.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-       CreateWinMD:
-         F:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.exe" /INCREMENTAL /NOLOGO WindowsApp.lib /MANIFEST:NO /DEBUG:FASTLINK /PDB:"G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /APPCONTAINER /WINMD:ONLY /WINMDFILE:"G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X86 Debug\App.xaml.obj
-         Debug\MainPage.xaml.obj
-         Debug\pch.obj
-         Debug\XamlTypeInfo.Impl.g.obj
-       CompileXamlGeneratedFiles:
+     1>CompileXamlGeneratedFiles:
          F:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /IG:\Projects\MemoryGame\MemoryGame\ /I"Generated Files\\" /IDebug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /D __WRL_NO_DEFAULT_LIB__ /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"Debug\MemoryGame.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /wd4453 /wd28204 /FU"F:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib\store\references\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\1.0.0.0\Windows.Foundation.FoundationContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\1.0.0.0\Windows.Foundation.UniversalApiContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Networking.Connectivity.WwanContract\1.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd" /analyze- /errorReport:prompt /bigobj "Generated Files\XamlTypeInfo.g.cpp"
          XamlTypeInfo.g.cpp
        Link:
@@ -22,7 +9,6 @@
          Debug\pch.obj
          Debug\XamlTypeInfo.Impl.g.obj
          Debug\XamlTypeInfo.g.obj
-            Creating library G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.lib and object G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.exp
          MemoryGame.vcxproj -> G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.exe
        _GenerateProjectPriFileCore:
          C:\Program Files (x86)\Windows Kits\10\bin\x64\MakePri.exe New -ProjectRoot G:\Projects\MemoryGame\MemoryGame\ -ConfigXml Debug\priconfig.xml -OutputFile G:\Projects\MemoryGame\Debug\MemoryGame\resources.pri -IndexName 1508443b-d3d9-4765-9014-02b505f893f3 -Verbose -Overwrite  
@@ -30,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.56
+Time Elapsed 00:00:03.08
