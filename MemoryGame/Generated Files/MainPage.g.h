@@ -26,6 +26,17 @@ namespace Windows {
 namespace Windows {
     namespace UI {
         namespace Xaml {
+            namespace Media {
+                namespace Animation {
+                    ref class Storyboard;
+                }
+            }
+        }
+    }
+}
+namespace Windows {
+    namespace UI {
+        namespace Xaml {
             namespace Documents {
                 ref class Run;
             }
@@ -52,6 +63,8 @@ namespace MemoryGame
         private: ::Windows::UI::Xaml::Controls::StackPanel^ statsArea;
         private: ::Windows::UI::Xaml::Controls::Grid^ messageArea;
         private: ::Windows::UI::Xaml::Controls::Grid^ cardGrid;
+        private: ::Windows::UI::Xaml::Media::Animation::Storyboard^ ButtonTurn;
+        private: ::Windows::UI::Xaml::Media::Animation::Storyboard^ ButtonFlip;
         private: ::Windows::UI::Xaml::Controls::Button^ button24;
         private: ::Windows::UI::Xaml::Controls::Button^ button23;
         private: ::Windows::UI::Xaml::Controls::Button^ button22;

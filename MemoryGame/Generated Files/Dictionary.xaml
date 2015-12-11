@@ -65,7 +65,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="ButtonAnim" TargetType="Button" BasedOn="{ StaticResource ButtonFace}">
         <Setter Property="Transitions">
             <Setter.Value>
@@ -74,7 +74,36 @@
                 </TransitionCollection>
             </Setter.Value>
         </Setter>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform x:Name="buttonAnim"/>
+            </Setter.Value>
+        </Setter>
     </Style>
-    
+
+    <!--start button style-->
+    <Style x:Key="StartButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Height" Value="90"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#FF0B2F6E"/>
+        <Setter Property="Margin" Value="0,0,0,50"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF3B68B8"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <RotateTransform x:Name="buttonRotate"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+           
 </ResourceDictionary>
 

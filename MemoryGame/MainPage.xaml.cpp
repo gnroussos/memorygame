@@ -22,15 +22,13 @@ using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Media::Imaging;
 using namespace Windows::UI::Xaml::Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 MainPage::MainPage()
 {
 	InitializeComponent();
 
 	blackBrush = ref new SolidColorBrush(Windows::UI::Colors::Black);
 	whiteBrush = ref new SolidColorBrush(Windows::UI::Colors::White);
-	redBrush = ref new SolidColorBrush(Windows::UI::Colors::Red);
+//	redBrush = ref new SolidColorBrush(Windows::UI::Colors::Red);
 
 
 	srand(static_cast<unsigned int>(time(nullptr)));
@@ -67,6 +65,18 @@ int MemoryGame::MainPage::IsFound(Windows::UI::Xaml::Controls::Button ^B)
 	return NOTFOUND;
 }
 
+void MemoryGame::MainPage::FlipCards()
+{
+	for (int i = 0; i < cardGrid->Children->Size; i++)							//enable rest cards
+	{
+		Grid^ grid = safe_cast<Grid^>(cardGrid->Children->GetAt(i));
+		Button^ btn = safe_cast<Button^>(grid->Children->GetAt(0));
+		if (pairsFound->Size > i && pairsFound->GetAt(i) == btn)
+			continue;
+		btn->IsHitTestVisible = true;
+	}
+}
+
 void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	Platform::Object ^obj = safe_cast<Button^>(sender)->Content;
@@ -86,7 +96,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 			card1Up = cardPack[found];
 		}
 	}
-	else if (Button2Up == nullptr && (card1Up == nullptr || card2Up == nullptr))	//2nd card up
+	else if (Button2Up == nullptr) // && (card1Up == nullptr || card2Up == nullptr))	//2nd card up
 	{
 		Button2Up = safe_cast<Button^>(sender);
 
@@ -97,6 +107,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 		if (found != NOTFOUND)
 		{
 			card2Up = cardPack[found];
+
 			Button2Up->IsHitTestVisible = false;
 		}
 
@@ -115,17 +126,14 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 			pairsFound->Append(Button1Up);
 			pairsFound->Append(Button2Up);
 
-			//card1Up = card2Up = nullptr;
-			//safe_cast<Image^>(Button1Up->Content)->Visibility = Windows::UI::Xaml::Visibility::Visible;
-			//safe_cast<Image^>(Button2Up->Content)->Visibility = Windows::UI::Xaml::Visibility::Visible;
 			Button1Up->Opacity = 0.5;
 			Button2Up->Opacity = 0.5;
 
-			Button1Up->Background = redBrush;
-			Button2Up->Background = redBrush;
 			Button1Up->IsEnabled = false;
 			Button2Up->IsEnabled = false;
 			Button1Up = Button2Up = nullptr;
+			
+			FlipCards();
 
 			if (++pairCount == cardCount / 2)										//test for end & reset
 				GameOver();
@@ -138,33 +146,15 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 	}
 	else																			//both cards up
 	{
-		Button ^ButtonUp = safe_cast<Button^>(sender);
-		if (ButtonUp == Button1Up)
-		{
-			Button1Up->IsHitTestVisible = true;
-			Button1Up = nullptr;
-
-		}
-		if (ButtonUp == Button2Up)
-		{
-			Button2Up->IsHitTestVisible = true;
-			Button2Up = nullptr;
-		}
-
-	}
-	if ((Button1Up == nullptr && Button2Up == nullptr) && (card1Up != nullptr || card2Up != nullptr))	//reanable rest of cards
-	{
-		for (int i = 0; i < cardGrid->Children->Size; i++)							//enable rest cards
-		{
-			Grid^ grid = safe_cast<Grid^>(cardGrid->Children->GetAt(i));
-			Button^ btn = safe_cast<Button^>(grid->Children->GetAt(0));
-			if (pairsFound->Size > i && pairsFound->GetAt(i) == btn)
-				continue;
-			btn->IsHitTestVisible = true;
-		}
+//		ButtonFlip->Begin();
+		safe_cast<Image^>(Button1Up->Content)->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
+		safe_cast<Image^>(Button2Up->Content)->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
+		
+		Button1Up = nullptr;
+		Button2Up = nullptr;	
 		card1Up = card2Up = nullptr;
+		FlipCards();
 	}
-	//	ButtonTurn->Begin();
 }
 
 void MemoryGame::MainPage::GameOver()
@@ -173,7 +163,7 @@ void MemoryGame::MainPage::GameOver()
 	int score = static_cast<double>(pairCount) / tries * 100;
 
 	HideMessages();
-	//	cardGrid->IsHitTestVisible = false;
+
 	winMessage->Opacity = 1;
 	scoreText->Text = score.ToString() + "%";
 	int min = safe_cast<int>(wintime);																	//codisplay in m:s
@@ -228,29 +218,29 @@ void MemoryGame::MainPage::InitializeCardPack()
 	cardPack = ref new Array<Card^>(cardCount)
 	{
 		ref new Card("Assets/Images/calf.jpg"),
-			ref new Card("Assets/Images/calf.jpg"),
-			ref new Card("Assets/Images/cat.jpg"),
-			ref new Card("Assets/Images/cat.jpg"),
-			ref new Card("Assets/Images/chicks.jpg"),
-			ref new Card("Assets/Images/chicks.jpg"),
-			ref new Card("Assets/Images/deer.jpg"),
-			ref new Card("Assets/Images/deer.jpg"),
-			ref new Card("Assets/Images/dog.jpg"),
-			ref new Card("Assets/Images/dog.jpg"),
-			ref new Card("Assets/Images/goat.jpg"),
-			ref new Card("Assets/Images/goat.jpg"),
-			ref new Card("Assets/Images/mouse.jpg"),
-			ref new Card("Assets/Images/mouse.jpg"),
-			ref new Card("Assets/Images/owl.jpg"),
-			ref new Card("Assets/Images/owl.jpg"),
-			ref new Card("Assets/Images/pig.jpg"),
-			ref new Card("Assets/Images/pig.jpg"),
-			ref new Card("Assets/Images/rabbit.jpg"),
-			ref new Card("Assets/Images/rabbit.jpg"),
-			ref new Card("Assets/Images/seal.jpg"),
-			ref new Card("Assets/Images/seal.jpg"),
-			ref new Card("Assets/Images/turtle.jpg"),
-			ref new Card("Assets/Images/turtle.jpg")
+		ref new Card("Assets/Images/calf.jpg"),
+		ref new Card("Assets/Images/cat.jpg"),
+		ref new Card("Assets/Images/cat.jpg"),
+		ref new Card("Assets/Images/chicks.jpg"),
+		ref new Card("Assets/Images/chicks.jpg"),
+		ref new Card("Assets/Images/deer.jpg"),
+		ref new Card("Assets/Images/deer.jpg"),
+		ref new Card("Assets/Images/dog.jpg"),
+		ref new Card("Assets/Images/dog.jpg"),
+		ref new Card("Assets/Images/goat.jpg"),
+		ref new Card("Assets/Images/goat.jpg"),
+		ref new Card("Assets/Images/mouse.jpg"),
+		ref new Card("Assets/Images/mouse.jpg"),
+		ref new Card("Assets/Images/owl.jpg"),
+		ref new Card("Assets/Images/owl.jpg"),
+		ref new Card("Assets/Images/pig.jpg"),
+		ref new Card("Assets/Images/pig.jpg"),
+		ref new Card("Assets/Images/rabbit.jpg"),
+		ref new Card("Assets/Images/rabbit.jpg"),
+		ref new Card("Assets/Images/seal.jpg"),
+		ref new Card("Assets/Images/seal.jpg"),
+		ref new Card("Assets/Images/turtle.jpg"),
+		ref new Card("Assets/Images/turtle.jpg")
 	};
 }
 
@@ -294,6 +284,7 @@ void MemoryGame::MainPage::StartButton_Tapped(Platform::Object^ sender, Windows:
 	InitializeGame();														//start game
 	HideMessages();															//hide messages
 	cardGrid->IsHitTestVisible = true;										//activate grid
+	ButtonTurn->Begin();													//
 	timer->StartTimer();													//start time
 }
 

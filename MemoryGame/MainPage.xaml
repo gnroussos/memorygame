@@ -73,15 +73,8 @@
             </Paragraph>
         </RichTextBlock>
         <!-- Game controls-->
-       <Button x:Name="StartButton" Content="Start" FontSize="32" BorderBrush="Black" Height="90" Width="150" HorizontalAlignment="Center" 
-                        Foreground="#FF0B2F6E" Tapped="StartButton_Tapped" Grid.Row="1" Margin="0,0,0,50">
-                <Button.Background>
-                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
-                        <GradientStop Color="white" Offset="1"/>
-                        <GradientStop Color="#FF3B68B8"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+       <Button x:Name="StartButton" Content="Start" Style="{StaticResource StartButtonStyle}" Tapped="StartButton_Tapped" Grid.Row="1">
+        </Button>
         <StackPanel x:Name="statsArea" Grid.Row="1" VerticalAlignment="Bottom">
             <TextBlock Margin="10,0,0,10" Foreground="Black" FontSize="32"  TextWrapping="Wrap" >
                         <Run x:Name="triesBox" Text="Tries: " />
@@ -143,23 +136,33 @@
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Grid.Resources>
+            <Grid.Resources>
                 <Storyboard x:Name="ButtonTurn">
-                    <DoubleAnimation From="1" To="360" Duration="00:00:2" BeginTime="00:00:0"
+                    <DoubleAnimation From="0" To="359" Duration="00:00:1" BeginTime="00:00:0"
                                          Storyboard.TargetName="buttonRotate" Storyboard.TargetProperty="Angle"
                                          AutoReverse="True">
                         <DoubleAnimation.EasingFunction>
-                            <ElasticEase Oscillations="1" Springiness="1" EasingMode="EaseOut"/>
+                            <ElasticEase Oscillations="0" Springiness="0" EasingMode="EaseOut"/>
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </Storyboard>
-            </Grid.Resources>-->
+
+                <Storyboard x:Name="ButtonFlip">
+                    <DoubleAnimation From="1" To="2" Duration="00:00:1" BeginTime="00:00:0"
+                                             Storyboard.TargetName="buttonAnim" Storyboard.TargetProperty="ScaleY" 
+                                             AutoReverse="True">
+                        <DoubleAnimation.EasingFunction>
+                            <BounceEase Bounces="0" />
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                </Storyboard>
+            </Grid.Resources>
 
             <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
                 <Button x:Name="button1" Style="{StaticResource ButtonAnim}" Click="button_Click">
                     <Image Source=" " Style="{StaticResource CardVisible}"/>
                     <!--<Button.RenderTransform>
-                        <RotateTransform x:Name="buttonRotate" />
+                        <ScaleTransform x:Name="buttonAnim"/>
                     </Button.RenderTransform>-->
                 </Button>
             </Grid>
@@ -258,7 +261,7 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="4" Style="{StaticResource CardsGrid}" PointerEntered="Card_Entered" PointerExited="Card_Exited">
-                <Button x:Name="button20" Style="{StaticResource ButtonAnim}" Click="button_Click" Margin="4,-3,2,9">
+                <Button x:Name="button20" Style="{StaticResource ButtonAnim}" Click="button_Click">
                     <Image Source=" " Style="{StaticResource CardVisible}"/>
                 </Button>
             </Grid>

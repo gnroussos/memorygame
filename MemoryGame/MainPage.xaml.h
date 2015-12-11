@@ -95,7 +95,7 @@ namespace MemoryGame
 		
 		Windows::UI::Xaml::Media::SolidColorBrush^ blackBrush;				// Card highlight color
 		Windows::UI::Xaml::Media::SolidColorBrush^ whiteBrush;				// Card normal color
-		Windows::UI::Xaml::Media::SolidColorBrush^ redBrush;				// Card found color
+//		Windows::UI::Xaml::Media::SolidColorBrush^ redBrush;				// Card found color
 
 		Platform::Array<Card^>^ cardPack;									// The pack of cards
 		Windows::UI::Xaml::Controls::Button ^Button1Up;
@@ -110,6 +110,7 @@ namespace MemoryGame
 		void InitializeGame();												// Sets up a game with a shuffled cardPack
 		void ShuffleCards();												// Shuffle the cards
 		void GameOver();
+		void FlipCards();
 
 		int IsFound(Windows::UI::Xaml::Controls::Button ^B);
 		void HideMessages();
