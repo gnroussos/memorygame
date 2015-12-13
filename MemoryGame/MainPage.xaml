@@ -57,7 +57,6 @@
                                                 <Run x:Name="AboutCopyR" Text="{Binding CopyRight}"/>
                                         </TextBlock>
                                     </StackPanel>
-                                    <!--</StackPanel>-->
                                 </Grid>
                             </ItemsControl>
                         </Flyout>
@@ -73,7 +72,7 @@
             </Paragraph>
         </RichTextBlock>
         <!-- Game controls-->
-       <Button x:Name="StartButton" Content="Start" Style="{StaticResource StartButtonStyle}" Tapped="StartButton_Tapped" Grid.Row="1">
+        <Button x:Name="StartButton" Content="Start" Style="{StaticResource StartButtonStyle}" Tapped="StartButton_Tapped" Grid.Row="1">
         </Button>
         <StackPanel x:Name="statsArea" Grid.Row="1" VerticalAlignment="Bottom">
             <TextBlock Margin="10,0,0,10" Foreground="Black" FontSize="32"  TextWrapping="Wrap" >
@@ -108,8 +107,7 @@
                     <Run Text="How to Play:"/>
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="Find all the pairs of matching cards "/>
-                    <Run Text="by turning up two at a time."/>
+                    <Run Text="Find all the pairs of matching cards, by turning up two, at a time."/>
                 </Paragraph>
                 <Paragraph>
                     <Run Text="If two cards don't match, click either to turn them back over."/>
@@ -130,7 +128,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="6*"/>
-                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="06*"/>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="6*"/>
@@ -138,21 +136,11 @@
 
             <Grid.Resources>
                 <Storyboard x:Name="ButtonTurn">
-                    <DoubleAnimation From="0" To="359" Duration="00:00:1" BeginTime="00:00:0"
+                    <DoubleAnimation From="0" To="360" Duration="00:00:1" BeginTime="00:00:0"
                                          Storyboard.TargetName="buttonRotate" Storyboard.TargetProperty="Angle"
                                          AutoReverse="True">
                         <DoubleAnimation.EasingFunction>
                             <ElasticEase Oscillations="0" Springiness="0" EasingMode="EaseOut"/>
-                        </DoubleAnimation.EasingFunction>
-                    </DoubleAnimation>
-                </Storyboard>
-
-                <Storyboard x:Name="ButtonFlip">
-                    <DoubleAnimation From="1" To="2" Duration="00:00:1" BeginTime="00:00:0"
-                                             Storyboard.TargetName="buttonAnim" Storyboard.TargetProperty="ScaleY" 
-                                             AutoReverse="True">
-                        <DoubleAnimation.EasingFunction>
-                            <BounceEase Bounces="0" />
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                 </Storyboard>

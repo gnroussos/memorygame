@@ -111,6 +111,7 @@ namespace MemoryGame
 		void ShuffleCards();												// Shuffle the cards
 		void GameOver();
 		void FlipCards();
+		void AnimateCards();
 
 		int IsFound(Windows::UI::Xaml::Controls::Button ^B);
 		void HideMessages();

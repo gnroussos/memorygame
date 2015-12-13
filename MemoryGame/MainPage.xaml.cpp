@@ -20,6 +20,7 @@ using namespace Windows::UI::Xaml::Data;
 using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Media::Imaging;
+using namespace Windows::UI::Xaml::Media::Animation;
 using namespace Windows::UI::Xaml::Navigation;
 
 MainPage::MainPage()
@@ -77,6 +78,49 @@ void MemoryGame::MainPage::FlipCards()
 	}
 }
 
+void MemoryGame::MainPage::AnimateCards()
+{
+	Point center= Point(0.5f, 0.5f);
+	TimeSpan time;
+	time.Duration = 30000;
+	
+	Duration d = Duration(time);
+	d.__durationType = DurationType::Automatic;
+
+	RotateTransform ^cardRotate = ref new RotateTransform();						//create Transform
+	cardRotate->Angle = 0.0;
+	
+	Button1Up->RenderTransformOrigin = center;										//asign to center of button
+	Button1Up->RenderTransform = cardRotate;
+	
+	Button2Up->RenderTransformOrigin = center;
+	Button2Up->RenderTransform = cardRotate;
+
+	DoubleAnimation ^animBut = ref new DoubleAnimation();							//create animation
+	animBut->Duration = d; 
+
+	ElasticEase ^func = ref new ElasticEase();										//create animation function
+	func->Oscillations = 2.0;
+	func->Springiness = 2.0;
+	func->EasingMode = EasingMode::EaseOut;
+
+	animBut->EasingFunction = func;													//add animation func into animation
+	
+	Storyboard ^cardStory = ref new Storyboard();									//create storyboard
+	cardStory->Duration = d;
+	cardStory->Children->Append(animBut);
+	Storyboard::SetTarget(animBut,cardRotate);
+	Storyboard::SetTargetProperty(animBut,"Angle");
+	animBut->From = 0.0;
+	animBut->To = 360.0;
+	animBut->AutoReverse = false;
+	
+	cardGrid->Resources->Insert("cardStory", cardStory);							//add to resources
+
+	cardStory->Begin();
+}
+	
+
 void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	Platform::Object ^obj = safe_cast<Button^>(sender)->Content;
@@ -85,7 +129,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 		safe_cast<Image^>(obj)->Visibility = Windows::UI::Xaml::Visibility::Visible;
 	else
 		safe_cast<Image^>(obj)->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
-
+	
 	if (Button1Up == nullptr && Button2Up == nullptr)								//no card up
 	{
 		Button1Up = safe_cast<Button^>(sender);
@@ -126,6 +170,8 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 			pairsFound->Append(Button1Up);
 			pairsFound->Append(Button2Up);
 
+			AnimateCards();
+			
 			Button1Up->Opacity = 0.5;
 			Button2Up->Opacity = 0.5;
 
@@ -174,7 +220,7 @@ void MemoryGame::MainPage::GameOver()
 
 void MemoryGame::MainPage::HideMessages()
 {
-	winMessage->Opacity = 0;																			//hide messages maybe 
+	winMessage->Opacity = 0;																			//hide messages 
 	playMessage->Opacity = 0;
 	startMsg->Opacity = 0;
 	scoreText->Text = "";
@@ -295,7 +341,7 @@ void MemoryGame::MainPage::About_Tapped(Platform::Object^ sender, Windows::UI::X
 	aboutInfo->AppName = "Secret Zoo";
 	aboutInfo->Description = "A card game to test your memory!";
 	aboutInfo->CopyRight = "(c)2015";
-	aboutInfo->Version = "Version: 1.0";
+	aboutInfo->Version = "Version: 1.1";
 	aboutInfo->Logo = "Assets/smalllogo.png";
 	AboutGrid->DataContext = aboutInfo;
 }

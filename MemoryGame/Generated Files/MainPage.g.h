@@ -64,7 +64,6 @@ namespace MemoryGame
         private: ::Windows::UI::Xaml::Controls::Grid^ messageArea;
         private: ::Windows::UI::Xaml::Controls::Grid^ cardGrid;
         private: ::Windows::UI::Xaml::Media::Animation::Storyboard^ ButtonTurn;
-        private: ::Windows::UI::Xaml::Media::Animation::Storyboard^ ButtonFlip;
         private: ::Windows::UI::Xaml::Controls::Button^ button24;
         private: ::Windows::UI::Xaml::Controls::Button^ button23;
         private: ::Windows::UI::Xaml::Controls::Button^ button22;

@@ -65,18 +65,13 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+<!--cards style-->
     <Style x:Key="ButtonAnim" TargetType="Button" BasedOn="{ StaticResource ButtonFace}">
         <Setter Property="Transitions">
             <Setter.Value>
                 <TransitionCollection>
                     <PaneThemeTransition/>
                 </TransitionCollection>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <ScaleTransform x:Name="buttonAnim"/>
             </Setter.Value>
         </Setter>
     </Style>
@@ -103,7 +98,8 @@
                 <RotateTransform x:Name="buttonRotate"/>
             </Setter.Value>
         </Setter>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
     </Style>
-           
+
 </ResourceDictionary>
 

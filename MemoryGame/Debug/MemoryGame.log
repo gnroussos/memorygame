@@ -1,3 +1,10 @@
-﻿  XamlTypeInfo.g.cpp
+﻿  MainPage.xaml.cpp
+g:\projects\memorygame\memorygame\mainpage.xaml.cpp(59): warning C4018: '<': signed/unsigned mismatch
+g:\projects\memorygame\memorygame\mainpage.xaml.cpp(71): warning C4018: '<': signed/unsigned mismatch
+g:\projects\memorygame\memorygame\mainpage.xaml.cpp(75): warning C4018: '>': signed/unsigned mismatch
+g:\projects\memorygame\memorygame\mainpage.xaml.cpp(103): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+g:\projects\memorygame\memorygame\mainpage.xaml.cpp(158): warning C4018: '<': signed/unsigned mismatch
+g:\projects\memorygame\memorygame\mainpage.xaml.cpp(209): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  XamlTypeInfo.g.cpp
   MemoryGame.vcxproj -> G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.exe
   MemoryGame.vcxproj -> G:\Projects\MemoryGame\Debug\MemoryGame\MemoryGame.pdb (Partial PDB)
