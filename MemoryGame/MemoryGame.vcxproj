@@ -99,6 +99,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <PackageCertificateKeyFile>MemoryGame_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundle>Auto</AppxBundle>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
@@ -178,9 +182,13 @@
     <Image Include="Assets\Images\turtle.jpg" />
     <Image Include="Assets\logo.scale-100.png" />
     <Image Include="Assets\smalllogo.scale-100.png" />
-    <Image Include="Assets\splashscreen.png" />
+    <Image Include="Assets\SplashScreen.scale-100.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\store.scale-100.png" />
-    <Image Include="Debug\turtle.jpg" />
+    <Image Include="Assets\widelogo.scale-100.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">

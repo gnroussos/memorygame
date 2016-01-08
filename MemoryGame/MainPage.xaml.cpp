@@ -22,6 +22,7 @@ using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Media::Imaging;
 using namespace Windows::UI::Xaml::Media::Animation;
 using namespace Windows::UI::Xaml::Navigation;
+using namespace Windows::ApplicationModel;
 
 MainPage::MainPage()
 {
@@ -338,10 +339,12 @@ void MemoryGame::MainPage::StartButton_Tapped(Platform::Object^ sender, Windows:
 void MemoryGame::MainPage::About_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e)
 {
 	AboutInfo ^aboutInfo = ref new AboutInfo();
-	aboutInfo->AppName = "Secret Zoo";
+	Package ^myp = Windows::ApplicationModel::Package::Current;
+
+	aboutInfo->AppName = myp->DisplayName;
 	aboutInfo->Description = "A card game to test your memory!";
 	aboutInfo->CopyRight = "(c)2015";
-	aboutInfo->Version = "Version: 1.1";
-	aboutInfo->Logo = "Assets/smalllogo.png";
+	aboutInfo->Version ="Version: 1.3";
+	aboutInfo->Logo = myp->Logo->ToString();
 	AboutGrid->DataContext = aboutInfo;
 }

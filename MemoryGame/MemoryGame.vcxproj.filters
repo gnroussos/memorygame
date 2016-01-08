@@ -50,9 +50,6 @@
     <Image Include="Assets\Images\rabbit.jpg">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Debug\turtle.jpg">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="Assets\Images\seal.jpg">
       <Filter>Assets</Filter>
     </Image>
@@ -68,10 +65,13 @@
     <Image Include="Assets\smalllogo.scale-100.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\splashscreen.png">
+    <Image Include="Assets\store.scale-100.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\store.scale-100.png">
+    <Image Include="Assets\SplashScreen.scale-100.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\widelogo.scale-100.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

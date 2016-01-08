@@ -1,1 +1,0 @@
-G:\Projects\MemoryGame\MemoryGame\MemoryGame.vcxproj;x86
