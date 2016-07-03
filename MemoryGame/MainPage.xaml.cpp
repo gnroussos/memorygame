@@ -69,7 +69,7 @@ int MemoryGame::MainPage::IsFound(Windows::UI::Xaml::Controls::Button ^B)
 
 void MemoryGame::MainPage::FlipCards()
 {
-	for (int i = 0; i < cardGrid->Children->Size; i++)							//enable rest cards
+	for (int i = 0; i < cardGrid->Children->Size; i++)								//enable rest cards
 	{
 		Grid^ grid = safe_cast<Grid^>(cardGrid->Children->GetAt(i));
 		Button^ btn = safe_cast<Button^>(grid->Children->GetAt(0));
@@ -141,7 +141,7 @@ void MemoryGame::MainPage::button_Click(Platform::Object^ sender, Windows::UI::X
 			card1Up = cardPack[found];
 		}
 	}
-	else if (Button2Up == nullptr) // && (card1Up == nullptr || card2Up == nullptr))	//2nd card up
+	else if (Button2Up == nullptr) 													//2nd card up
 	{
 		Button2Up = safe_cast<Button^>(sender);
 
@@ -213,8 +213,7 @@ void MemoryGame::MainPage::GameOver()
 
 	winMessage->Opacity = 1;
 	scoreText->Text = score.ToString() + "%";
-	int min = safe_cast<int>(wintime);																	//codisplay in m:s
-	min /= 60;
+	
 	int secs = (int)wintime % 60; 
 	timeText->Text = safe_cast<int>((wintime) / 60).ToString() + "m:" + (secs).ToString() +"s";
 }

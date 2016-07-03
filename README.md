@@ -14,7 +14,7 @@ A memory card game in C++/CX for Windows 10, which demonstrates features on the 
 
 ##Testing 
 Running & testing Universal Windows apps, on a different than the development machine, is not a simple process (security issues & publishing in Store).<br/>
-However, inside `\install` folder, a package of the game is included, to install & run on a local pc running **Windows 10**, without compiling the source (Visual Studio).
+However, inside `\install` folder, a package of the game has been included, to install & run (under certain conditions) on a local pc running **Windows 10**, without compiling the source (Visual Studio).
 
 ###Installation
 Unzip the `secretzoo.zip` file in a folder.
@@ -26,8 +26,8 @@ Click <kbd>Finish</kbd>.
 
 Then, right click `Add-AppDevPackage.ps1` file & choose **Run with PowerShell**.<br/>
 This will bring up a command window, which will deploy the app on the pc.
-Follow the instruction on the screen, if any, & the app should be installed.<br/><br/>
+Follow the instruction on the screen, if any, and the app should be installed.<br/><br/>
 
 
 > ######Note
-In order to run the app it's *necessary* the certification file to be installed on a machine running *Windows 10*. Later, if it's not needed anymore, the certification file should be manually removed.
+In order to run the app it's *necessary* the certification file to be installed on a machine running *Windows 10* (develop mode). Later, if not needed anymore, the certification file should be manually removed.
