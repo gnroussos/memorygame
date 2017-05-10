@@ -1,4 +1,8 @@
-# memorygame
+# Memory Game
+
+![platform](https://img.shields.io/badge/platform-UWP|C++/CX-yellow.svg?style=plastic)
+[![license](https://img.shields.io/badge/license-GPL_(>=3)-blue.svg?style=plastic)](license)
+![build](https://img.shields.io/badge/build-passed-green.svg?style=plastic)
 
 A memory card game in C++/CX for Windows 10, which demonstrates features on the Universal Windows Platform (UWP)<br/>
 
@@ -11,9 +15,9 @@ A memory card game in C++/CX for Windows 10, which demonstrates features on the 
 <li>Data binding</li>
 <li>Storyboard animations</li>
 <li>Animated elements</li>
-
-##Testing 
-Running & testing Universal Windows apps, on a different than the development machine, is not a simple process (security issues & publishing in Store).<br/>
+<br/>
+###Testing 
+Running & testing Universal Windows apps, on a non development machine, is not a simple process (security issues & publishing in Store).<br/>
 However, inside `\install` folder, a package of the game has been included, to install & run (under certain conditions) on a local pc running **Windows 10**, without compiling the source (Visual Studio).
 
 ###Installation
