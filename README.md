@@ -1,8 +1,9 @@
 # Memory Game
+<p>
 <img src ="https://img.shields.io/badge/platform-UWP|C++/CX-yellow.svg?style=plastic">
 <a href="license" alt="license"> <img src="https://img.shields.io/badge/license-GPL_(>=3)-blue.svg?style=plastic"> </a>
 <img src ="https://img.shields.io/badge/build-passed-green.svg?style=plastic">
-
+</p>
 A memory card game in C++/CX for Windows 10, which demonstrates features on the Universal Windows Platform (UWP)<br/>
 
 <li>Desktop Windows (Win32) API consumed within Windows runtime (WinRT)</li>
