@@ -15,7 +15,7 @@ A memory card game in C++/CX for Windows 10, which demonstrates features on the 
 <li>Data binding</li>
 <li>Storyboard animations</li>
 <li>Animated elements</li>
-<br/>
+
 ### Testing 
 
 Running & testing Universal Windows apps, on a non development machine, is not a simple process (security issues & publishing in Store).<br/>
