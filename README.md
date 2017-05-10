@@ -1,6 +1,6 @@
 # Memory Game
 <img src ="https://img.shields.io/badge/platform-UWP|C++/CX-yellow.svg?style=plastic">
-[![license](https://img.shields.io/badge/license-GPL_(>=3)-blue.svg?style=plastic)](license)
+<a href="license" alt="license"> <img src="https://img.shields.io/badge/license-GPL_(>=3)-blue.svg?style=plastic"> </a>
 <img src ="https://img.shields.io/badge/build-passed-green.svg?style=plastic">
 
 A memory card game in C++/CX for Windows 10, which demonstrates features on the Universal Windows Platform (UWP)<br/>
@@ -15,12 +15,12 @@ A memory card game in C++/CX for Windows 10, which demonstrates features on the 
 <li>Storyboard animations</li>
 <li>Animated elements</li>
 <br/>
-###Testing 
+### Testing 
 
 Running & testing Universal Windows apps, on a non development machine, is not a simple process (security issues & publishing in Store).<br/>
 However, inside `\install` folder, a package of the game has been included, to install & run (under certain conditions) on a local pc running **Windows 10**, without compiling the source (Visual Studio).
 
-###Installation
+### Installation
 
 Unzip the `secretzoo.zip` file in a folder.
 Within the created folder (`MemoryGame_1.3.4.0_Win32_Test`), right click on the `MemoryGame_1.3.4.0_Win32.cer` file & choose **Install Certificate**.
